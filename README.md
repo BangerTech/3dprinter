@@ -2,4 +2,4 @@
 
 - designed by BangerTech
 
-![Screenshot 2021-03-11 220145](https://user-images.githubusercontent.com/73241309/110854650-8c54ef00-82b5-11eb-8bef-a0c4d67f6d46.png)
+![Screenshot 2021-03-17 203442](https://user-images.githubusercontent.com/73241309/111527462-3faf5f00-8760-11eb-9258-c2d8c2084425.png)
