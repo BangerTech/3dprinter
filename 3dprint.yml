@@ -2,6 +2,18 @@ uid: 3d-druck
 tags: []
 props:
   parameters:
+    - context: item
+      description: Set the Power item here
+      label: Power
+      name: poweritem
+      required: false
+      type: TEXT
+    - context: item
+      description: Set the Light item here
+      label: Light
+      name: lightitem
+      required: false
+      type: TEXT
     - description: Set the height of the Widget
       label: Widget Height
       name: cardheight
@@ -42,7 +54,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Mar 6, 2021, 1:01:48 PM
+timestamp: Mar 17, 2021, 7:50:35 PM
 component: f7-card
 config:
   style:
@@ -94,7 +106,7 @@ slots:
                 - component: f7-col
                   config:
                     style:
-                      width: 35%
+                      width: 15%
                       display: grid
                       justify-items: center
                   slots:
@@ -127,7 +139,7 @@ slots:
                             align-items: center
                             justify-content: start
                             margin-top: 15px
-                            padding-left: 42px
+                            padding-left: 22px
                         slots:
                           default:
                             - component: f7-icon
@@ -137,7 +149,6 @@ slots:
                                 style:
                                   grid-column: 1
                                   color: white
-                                  padding-left: 10px
                                   transform: rotate(-90deg)
                             - component: f7-icon
                               config:
@@ -148,7 +159,7 @@ slots:
                                   color: white
                                   position: absolute
                                   transform: scaleY(0.3) scaleX(1.5)
-                                  margin-top: 5px
+                                  margin-top: 10px
                                   padding-right: 40px
                             - component: Label
                               config:
@@ -166,7 +177,7 @@ slots:
                             align-items: center
                             justify-content: start
                             margin-top: 15px
-                            padding-left: 42px
+                            padding-left: 22px
                         slots:
                           default:
                             - component: f7-icon
@@ -197,7 +208,7 @@ slots:
                             align-items: center
                             justify-content: start
                             margin-top: 15px
-                            padding-left: 42px
+                            padding-left: 22px
                         slots:
                           default:
                             - component: oh-image
@@ -207,7 +218,7 @@ slots:
                                 height: 20
                             - component: Label
                               config:
-                                text: '=items[props.timeleftitem].state == "NULL" ? "not printing" : items[props.timeleftitem].state + " sec"'
+                                text: '=items[props.timeleftitem].state == "NULL" ? "not printing" : Math.floor(items[props.timeleftitem].state /3600)+":"+ Math.floor(items[props.timeleftitem].state / 60) + " h"'
                                 style:
                                   grid-column: 2
                                   font-size: 20px
@@ -215,7 +226,7 @@ slots:
                         config:
                           style:
                             height: 10%
-                            padding-right: 90px
+                            padding-right: 120px
                             margin-top: 15px
                         slots:
                           default:
@@ -233,7 +244,49 @@ slots:
                 - component: f7-col
                   config:
                     style:
-                      width: 65%
+                      width: 25%
+                      display: grid
+                      justify-items: center
+                  slots:
+                    default:
+                      - component: f7-row
+                        config:
+                          style:
+                            height: 20%
+                            display: grid
+                            grid-template-columns: 50px
+                            justify-items: center
+                            margin-top: 60px
+                            margin-left: 60px
+                        slots:
+                          default:
+                            - component: oh-button
+                              config:
+                                action: toggle
+                                actionItem: =props.poweritem
+                                actionCommand: ON
+                                actionCommandAlt: OFF
+                                iconF7: power
+                                iconSize: 50px
+                                color: '=items[props.poweritem].state === "ON" ? "green": "red"'
+                                style:
+                                  height: 50px
+                            - component: oh-button
+                              config:
+                                action: toggle
+                                actionItem: =props.lightitem
+                                actionCommand: ON
+                                actionCommandAlt: OFF
+                                iconF7: lightbulb
+                                iconSize: 50px
+                                color: '=items[props.lightitem].state === "ON" ? "yellow": "white"'
+                                style:
+                                  height: 50px
+                                  margin-top: 30px
+                - component: f7-col
+                  config:
+                    style:
+                      width: 60%
                       padding-top: 40px
                       display: grid
                       justify-content: center
